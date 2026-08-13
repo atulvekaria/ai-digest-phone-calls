@@ -1,0 +1,5 @@
+# Heroku Procfile
+# To deploy: git push heroku main
+# To start: heroku ps:scale worker=1
+
+worker: python -m src.main schedule
