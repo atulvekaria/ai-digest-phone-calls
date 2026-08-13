@@ -1,0 +1,295 @@
+================================================================================
+                    AI DIGEST PHONE CALLS - MENTAL MAP SUMMARY
+================================================================================
+
+✅ MENTAL MAP COMPLETE - THREE COMPREHENSIVE DOCUMENTS CREATED
+
+================================================================================
+WHAT WAS CREATED
+================================================================================
+
+1. MENTAL_MAP.md (780 lines, 29 KB)
+   Complete reference guide covering:
+   - System architecture overview with diagrams
+   - Complete data flow pipeline visualization
+   - Module structure and organization
+   - In-depth class descriptions and interactions
+   - Configuration and environment setup
+   - All execution paths and deployment modes
+   - Testing strategy and component tests
+   - Metrics, monitoring, and cost breakdown
+   - Design decisions and trade-offs
+   - Security considerations
+   - How to modify each component
+   - Debugging tips and troubleshooting
+   - Key design patterns
+
+2. ARCHITECTURE.md (692 lines, 25 KB)
+   Technical deep dive including:
+   - System components diagram
+   - Detailed module interaction diagram
+   - Data structures and transformations
+   - Complete class hierarchy
+   - Execution flow diagrams (3 deployment modes)
+   - Configuration and environment loading
+   - Error handling and recovery strategies
+   - API integration details for all external services
+   - Deployment architecture for each platform
+   - Performance characteristics and bottlenecks
+   - Scaling considerations
+   - Security and best practices
+   - Testing approaches
+   - Monitoring and observability
+   - Cost optimization strategies
+   - Future enhancement ideas (10 suggestions)
+
+3. MENTAL_MAP_INDEX.md (Navigation Guide)
+   Quick reference for finding information:
+   - Start here guides based on your goal
+   - Document structure comparison
+   - Navigation map
+   - Finding specific information lookup table
+   - Learning paths (complete, quick, specialized)
+   - Common tasks and where to look
+   - Tips for using the documentation
+   - Cross-reference strategy
+
+================================================================================
+SYSTEM MENTAL MAP AT A GLANCE
+================================================================================
+
+WHAT IT DOES:
+  Scrape AI News (RSS) → Synthesize Digest (Claude) → Convert to Voice (TTS)
+  → Place Phone Call (Twilio) → Ring Your Phone at 9 AM Daily
+
+KEY COMPONENTS:
+  • AIDigestService       - Main orchestrator (src/main.py)
+  • NewsScraper          - Fetches RSS feeds (src/news_scraper.py)
+  • DigestGenerator      - Claude synthesis (src/digest_generator.py)
+  • TTSConverter         - Text-to-speech (src/tts_converter.py)
+  • PhoneCaller          - Twilio integration (src/caller.py)
+  • Settings             - Configuration loader (config/settings.py)
+  • NEWS_SOURCES         - Feed configuration (config/news_sources.py)
+
+DATA FLOW:
+  1. Fetch news from 4 RSS feeds (Anthropic, OpenAI, HuggingFace, Google)
+  2. Filter by keywords if configured
+  3. Format as markdown for Claude
+  4. Call Claude API with optimization prompt
+  5. Claude returns structured digest (CRITICAL/IMPORTANT/MONITOR/ACTION)
+  6. Convert digest text to MP3 via OpenAI TTS
+  7. Place Twilio call to your phone
+  8. Twilio reads digest aloud over call
+
+DEPLOYMENT OPTIONS:
+  • Local: python -m src.main test
+  • Scheduler: python -m src.main schedule
+  • AWS Lambda: CloudWatch Events trigger daily
+  • Linux Cron: Scheduled shell command
+  • Heroku: Dyno with scheduler (deprecated)
+
+COST:
+  ~$3/month total:
+  • Twilio: $0.60 (calls)
+  • OpenAI: $1.50 (Claude + TTS)
+  • AWS Lambda: $0.20 (compute)
+  • AWS S3: $0.50 (optional audio hosting)
+
+================================================================================
+WHERE TO FIND INFORMATION
+================================================================================
+
+To understand how the system works:
+  → MENTAL_MAP.md "Data Flow Pipeline" & "System Architecture"
+  → ARCHITECTURE.md "Detailed Module Interaction Diagram"
+
+To modify a component:
+  → MENTAL_MAP.md "Key Classes Deep Dive" (for your component)
+  → MENTAL_MAP.md "How to Modify The System"
+
+To debug an issue:
+  → MENTAL_MAP.md "Debug Tips"
+  → ARCHITECTURE.md "Error Handling Strategy"
+
+To deploy to a new platform:
+  → MENTAL_MAP.md "Deployment Paths"
+  → ARCHITECTURE.md "Deployment Architecture"
+
+To add new features:
+  → ARCHITECTURE.md "Future Enhancement Ideas"
+  → MENTAL_MAP.md "Module Structure"
+
+To find a specific file:
+  → PROJECT_STRUCTURE.md (file-by-file)
+  → MENTAL_MAP.md "Module Structure"
+
+For quick commands:
+  → QUICK_REFERENCE.md (existing document)
+
+For step-by-step setup:
+  → docs/SETUP.md (existing document)
+
+================================================================================
+KEY FILES IN THE REPO
+================================================================================
+
+Documentation (read these):
+  • README.md                  - Project overview
+  • PROJECT_STRUCTURE.md       - File organization
+  • QUICK_REFERENCE.md         - Command cheat sheet
+  • MENTAL_MAP.md             - ✨ NEW: Complete mental map
+  • ARCHITECTURE.md           - ✨ NEW: Technical deep dive
+  • MENTAL_MAP_INDEX.md       - ✨ NEW: Navigation guide
+  • docs/SETUP.md             - Setup instructions
+  • docs/DEPLOYMENT.md        - Deployment options
+  • docs/TROUBLESHOOTING.md   - Common issues
+
+Source Code (main logic):
+  • src/main.py               - Orchestrator (AIDigestService)
+  • src/news_scraper.py       - RSS fetcher (NewsScraper)
+  • src/digest_generator.py   - Claude synthesis (DigestGenerator)
+  • src/tts_converter.py      - Voice generator (TTSConverter)
+  • src/caller.py             - Phone caller (PhoneCaller)
+
+Configuration:
+  • config/settings.py        - Environment loader
+  • config/news_sources.py    - RSS feed URLs
+  • .env.example              - Secrets template
+  • .env                       - Your secrets (not in git)
+
+Deployment:
+  • lambda/lambda_handler.py  - AWS Lambda entry point
+  • deployment/lambda_deploy.sh    - Deploy script
+  • deployment/cron_setup.sh       - Cron setup script
+  • Procfile                        - Heroku config
+
+================================================================================
+HOW TO USE THE MENTAL MAP
+================================================================================
+
+Option 1: Quick Overview (15 minutes)
+  1. Read MENTAL_MAP.md "System Architecture Overview"
+  2. Scan "Data Flow Pipeline" diagram
+  3. Check "Key Classes Deep Dive" for your area of interest
+
+Option 2: Deep Understanding (1 hour)
+  1. Read MENTAL_MAP.md completely
+  2. Read ARCHITECTURE.md completely
+  3. Open source code and trace the flow
+
+Option 3: Task-Specific (5-15 minutes)
+  1. Use MENTAL_MAP_INDEX.md to find your task
+  2. Go to the recommended section
+  3. Read that section carefully
+
+Option 4: Navigation (ongoing)
+  • Keep MENTAL_MAP_INDEX.md bookmarked
+  • Use it whenever you need to find information
+  • Cross-reference between MENTAL_MAP and ARCHITECTURE as needed
+
+================================================================================
+WHAT'S DOCUMENTED
+================================================================================
+
+✓ Complete system architecture
+✓ Data flow and transformations
+✓ Module organization
+✓ Class responsibilities and interactions
+✓ External API integrations (4 APIs)
+✓ Configuration and secrets management
+✓ All deployment options
+✓ Error handling strategies
+✓ Testing approaches
+✓ Debugging methodology
+✓ Cost analysis and optimization
+✓ Design decisions and rationale
+✓ Security best practices
+✓ How to modify any component
+✓ Future enhancement ideas
+✓ Performance characteristics
+✓ Scaling considerations
+
+NOT documented (already covered elsewhere):
+  • Step-by-step setup (see docs/SETUP.md)
+  • Specific deployment steps (see docs/DEPLOYMENT.md)
+  • Troubleshooting specific errors (see docs/TROUBLESHOOTING.md)
+  • Command line usage (see QUICK_REFERENCE.md)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+For future developers:
+  1. Start with README.md (5 min)
+  2. Read MENTAL_MAP_INDEX.md (5 min)
+  3. Jump to relevant sections based on your task
+  4. Cross-reference with ARCHITECTURE.md for details
+  5. Check source code for implementation details
+
+For your own reference:
+  1. Bookmark MENTAL_MAP.md
+  2. Keep MENTAL_MAP_INDEX.md handy
+  3. Share with team members when they join
+  4. Update these docs when you make changes
+
+For maintaining the docs:
+  • Update diagrams when architecture changes
+  • Add new patterns when discovered
+  • Document any new features
+  • Keep "Last Updated" date current
+  • Link related sections
+
+================================================================================
+DOCUMENT METADATA
+================================================================================
+
+Files Created:
+  • MENTAL_MAP.md          - 780 lines, 29 KB
+  • ARCHITECTURE.md        - 692 lines, 25 KB
+  • MENTAL_MAP_INDEX.md    - Navigation guide
+
+Total Content:
+  • ~1500 lines of documentation
+  • 54 KB of text
+  • 20+ ASCII diagrams
+  • 15+ tables
+  • Complete coverage of the codebase
+
+Created: 2026-08-13
+Purpose: Provide comprehensive mental map for system understanding
+Audience: Developers, maintainers, future contributors
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+What to read for different needs:
+
+"I need to understand the whole system"
+  → MENTAL_MAP.md (all sections)
+
+"I need to modify a component"
+  → MENTAL_MAP.md "Key Classes Deep Dive"
+
+"I need to debug an issue"
+  → ARCHITECTURE.md "Error Handling Strategy"
+
+"I need to deploy"
+  → MENTAL_MAP.md "Deployment Paths"
+
+"I need to extend features"
+  → ARCHITECTURE.md "Future Enhancement Ideas"
+
+"I need to find something"
+  → MENTAL_MAP_INDEX.md
+
+"I need a quick command"
+  → QUICK_REFERENCE.md
+
+"I need step-by-step"
+  → docs/SETUP.md or docs/DEPLOYMENT.md
+
+================================================================================
+
+✨ Your mental map is complete and ready for future reference!
+
